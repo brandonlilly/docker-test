@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+  - docker build -t blilly/docker-test -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true blilly/docker-test yarn test
